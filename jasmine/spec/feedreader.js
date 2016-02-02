@@ -79,7 +79,7 @@ $(function() {
         /* Additional test to check wether menu is hidden
          * when a link in our feedList is clicked on
          */
-        it('is hidden when link in feeList is clicked', function() {
+        it('is hidden when link in feedList is clicked', function() {
             // get all links from feedlist and push them into an array
             var feedListLinks = [];
             $(".feed-list a").each(function(){ 
