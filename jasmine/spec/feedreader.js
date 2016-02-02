@@ -56,17 +56,73 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
 
+    describe('The menu', function() {
+
+        var bodyClass = function() {
+            return $('body').hasClass('menu-hidden');
+        };
+        
+        var menuIcon = $('.menu-icon-link');
+
+        /* Determine wether body currently has menu-hidden class */
+        var menuVisibility = bodyClass();
+
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
 
+        it('is hidden by default', function() {
+            expect(menuVisibility).toBe(true);
+        });
+        /* Additional test to check wether menu is hidden
+         * when a link in our feedList is clicked on
+         */
+        it('is hidden when link in feeList is clicked', function() {
+            // get all links from feedlist and push them into an array
+            var feedListLinks = [];
+            $(".feed-list a").each(function(){ 
+                feedListLinks.push($(this)); 
+            });
+
+            // try functionality for each of them
+            feedListLinks.forEach(function(item){
+                // open menu
+                menuIcon.click();
+                // click on item
+                item.click();
+                // check wether body has menu-hidden class
+                menuVisibility = bodyClass();
+                expect(menuVisibility).toBe(true);
+
+            });
+
+        });
+   
+
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+    
+        describe('Menu Visibility', function() {
+            beforeEach(function() {
+                menuIcon.click();
+                // Needs to be run again before each, to determine current value.
+                menuVisibility = bodyClass();
+            });
+
+            it('displays when clicked', function(){
+                expect(menuVisibility).toBe(false);
+            });
+         
+            it('hides when clicked again', function() {
+                expect(menuVisibility).toBe(true);
+            });
+        });
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
