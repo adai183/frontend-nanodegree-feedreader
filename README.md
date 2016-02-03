@@ -23,17 +23,17 @@ This suite tests for new feature called "article preview" which
 displays a content snippet of the article within the feedreader app
 when the preview Icon is clicked. This feature is not yet implemented.
 
-* **- the Article Preview has content**
+* ** The Article Preview has content**
 <br>The app code actually has the basic structure for this but the p within the
 entry does not get populated.
 
-* **- The article prevew is hidden by default**
+* ** The article prevew is hidden by default**
 <br>Check wether the snippet has the snippet-hidden class. This structure is not yet implemented
 
-* **- The article preview displays when the preview Icon is clicked**
+* ** The article preview displays when the preview Icon is clicked**
 <br> Check wether the hypothetical snippet-hidden class is missing. I had to add a second assertation to check wether the snippet has content to make the test meaningful. Otherwise the test would pass even though the preview feature is not implemented 
 
-* **- The article preview hides when clicked again**
+* ** The article preview hides when clicked again**
 <br>Check wether hypothetical snippet-hidden class is toggled.
 
 **All specs in this test suite fail**
