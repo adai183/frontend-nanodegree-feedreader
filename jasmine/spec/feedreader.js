@@ -80,24 +80,15 @@ $(function() {
          * when a link in our feedList is clicked on
          */
         it('is hidden when link in feedList is clicked', function() {
-            // get all links from feedlist and push them into an array
-            var feedListLinks = [];
-            $(".feed-list a").each(function(){ 
-                feedListLinks.push($(this)); 
-            });
 
-            // try functionality for each of them
-            feedListLinks.forEach(function(item){
+            // try functionality for first link from feedlist
                 // open menu
                 menuIcon.click();
                 // click on item
-                item.click();
+                $(".feed-list a:first").click();
                 // check wether body has menu-hidden class
                 menuVisibility = bodyClass();
                 expect(menuVisibility).toBe(true);
-
-            });
-
         });
    
 
@@ -126,6 +117,8 @@ $(function() {
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
+     describe('Initial Entries', function() {
+
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -133,10 +126,41 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+        var entryCount;
+
+        beforeEach(function(done) {
+            loadFeed(0, done);
+          });
+
+        it('has one or more feeds loaded', function(done){
+          // check how many feeds are in feed container
+          entryCount = $('.feed a').length;
+          expect(entryCount).toBeGreaterThan(0);
+          done();
+        });
+    });
+    /* TODO: Write a new test suite named "New Feed Selection" */
+
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        var oldContent,
+            newContent;
+        
+        beforeEach(function(done) {
+            oldContent = $('.feed a:first').html();
+            loadFeed(1, done);
+          });
+
+        
+        it('has updated content', function(done){
+          newContent = $('.feed a:first').html();
+          expect(oldContent).not.toBe(newContent);
+          done();
+        });
+    });
 }());
