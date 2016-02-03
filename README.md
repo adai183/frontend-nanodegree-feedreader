@@ -1,39 +1,59 @@
-# Project Overview
+# Feedreader - Javascript Testing + TDD
+##### Udacity FEND Feedreader (Project 6)
 
-In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
-
-
-## Why this Project?
-
-Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development". This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass.
-
-Whether you work in an organization that uses test-driven development or in an organization that uses tests to make sure future feature development doesn't break existing features, it's an important skill to have!
+This web app testing is for the project 6 of Front-End Nanodegree at Udacity. The testing is for RSS feed reader functionality. Project was made with *Jasmine* framework.<br>
+I added an additional feed of Wired magazine to make the Feedreader more personal.
 
 
-## What will I learn?
+## How to use it
+* Download the Git Repo and 
+* open **index.html** in a browser.
 
-You will learn how to use Jasmine to write a number of tests against a pre-existing application. These will test the underlying business logic of the application as well as the event handling and DOM manipulation.
-
-
-## How will this help my career?
-
-* Writing effective tests requires analyzing multiple aspects of an application including the HTML, CSS and JavaScript - an extremely important skill when changing teams or joining a new company.
-* Good tests give you the ability to quickly analyze whether new code breaks an existing feature within your codebase, without having to manually test all of the functionality.
+The Feedreader is located at the top of the page and the Jasmine
+results can be found at the bottom.
 
 
-# How will I complete this project?
+### Additional Tests
+#### Test Suite 'The menu'
+* Added test to ensure the menu is hidden when link in the feed list is clicked <br>
+**This spec passes because the functionality is already implemented.**
 
-1. Download the [required project assets](http://github.com/udacity/frontend-nanodegree-feedreader).
-2. Review the functionality of the application within your browser.
-3. Explore the application's HTML (*./index.html*), CSS (*./css/style.css*) and JavaScript (*./js/app.js*) to gain an understanding of how it works.
-4. Explore the Jasmine spec file in *./jasmine/spec/feedreader.js*
-5. Edit the allFeeds variable in *./js/app.js* to make the provided test fail and see how Jasmine visualizes this failure in your application.
-6. Return the allFeeds variable to a passing state.
-7. Write a test that loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
-8. Write a test that loops through each feed in the allFeeds object and ensures it has a name defined and that the name is not empty.
-9. Write a new test suite named "The menu".
-10. Write a test that ensures the menu element is hidden by default. You'll have to analyze the HTML and the CSS to determine how we're performing the hiding/showing of the menu element.
-11. Write a test that ensures the menu changes visibility when the menu icon is clicked. This test should have two expectations: does the menu display when clicked and does it hide when clicked again.
-12. Write a test that ensures when the loadFeed function is called and completes its work, there is at least a single .entry element within the .feed container. Remember, loadFeed() is asynchronous so this test wil require the use of Jasmine's beforeEach and asynchronous done() function.
-13. Write a test that ensures when a new feed is loaded by the loadFeed function that the content actually changes. Remember, loadFeed() is asynchronous.
-14. When complete - all of your tests should pass.
+#### Test Suite 'Article Preview'
+This suite tests for new feature called "article preview" which
+displays a content snippet of the article within the feedreader app
+when the preview Icon is clicked. This feature is not yet implemented.
+
+* **- the Article Preview has content**
+<br>The app code actually has the basic structure for this but the p within the
+entry does not get populated.
+
+* **- The article prevew is hidden by default**
+<br>Check wether the snippet has the snippet-hidden class. This structure is not yet implemented
+
+* **- The article preview displays when the preview Icon is clicked**
+<br> Check wether the hypothetical snippet-hidden class is missing. I had to add a second assertation to check wether the snippet has content to make the test meaningful. Otherwise the test would pass even though the preview feature is not implemented 
+
+* **- The article preview hides when clicked again**
+<br>Check wether hypothetical snippet-hidden class is toggled.
+
+**All specs in this test suite fail**
+
+## Dependencies & Resources
+The Feedreader and Jasmine tests are built with:
+
+* jQuery 2.1.1
+* Jasmine 2.1.2
+* handlebars 2.0.0
+
+It also calls:
+
+* Google JS API - _probably_ to collect the RSS-Feeds
+* rsstojson.udacity.com/parseFeed - _probably_ to parse the RSS-Feeds
+
+
+## Additional Resources 
+* [Udacity Forum - Async tests](https://discussions.udacity.com/t/async-tests-why-the-second-done-call/40751/3)
+* [Udacity Forum - doubting my test](https://discussions.udacity.com/t/testing-wether-the-menu-is-hidden-when-a-link-in-feedlist-is-clicked/46406)
+* [jQuery Documentation](http://api.jquery.com)
+* [Jasmine Introduction](http://jasmine.github.io/2.0/introduction.html)
+* [stackoverflow.com](http://stackoverflow.com/)
