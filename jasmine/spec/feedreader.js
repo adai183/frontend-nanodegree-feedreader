@@ -124,13 +124,14 @@ $(function() {
             loadFeed(0, done);
         });
 
-        it('has one or more feeds loaded', function(done) {
+        it('has one or more feeds loaded', function() {
             // check how many feeds are in feed container
-            entryCount = $('.feed a').length;
+            entryCount = $('.feed .entry').length;
             expect(entryCount).toBeGreaterThan(0);
             done();
         });
     });
+    
     /* "New Feed Selection" Test Suite */
 
     describe('New Feed Selection', function() {
@@ -144,15 +145,21 @@ $(function() {
 
         beforeEach(function(done) {
             // save the old content for later comparison
-            oldContent = $('.feed a:first').html();
+            oldContent = $('.feed a:first > h2').html();
+
+            // Empty the .feed
+            $('.feed').empty();
+            
             // load next feed
-            loadFeed(1, done);
+            loadFeed(2, function() {
+            //populate newContent
+            newContent = $('.entry:first > h2').html();
+            done();
+            });
         });
 
 
-        it('has updated content', function(done) {
-            // check new content
-            newContent = $('.feed a:first').html();
+        it('has updated content', function() {
             // compare old and new
             expect(oldContent).not.toBe(newContent);
             done();
