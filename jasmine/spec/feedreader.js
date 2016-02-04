@@ -147,7 +147,7 @@ $(function() {
             // load inicial content to make test suite independent from other test suites
             loadFeed(0, function() {
                 // save the old content for later comparison
-                oldContent = $('.feed a:first > h2').html();
+                oldContent = $('.entry:first > h2').html();
                 // Empty the .feed
                 $('.feed').empty();
 
